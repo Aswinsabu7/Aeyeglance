@@ -1,0 +1,197 @@
+<div class="tickets-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div>
+      <h2 class="page-title">Tickets</h2>
+      <p class="page-subtitle">Track and manage support tickets</p>
+    </div>
+    <a routerLink="/tickets/new" class="btn btn-save">
+      <i class="pi pi-plus"></i>
+      <span>New Ticket</span>
+    </a>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar app-card">
+    <div class="toolbar-top">
+
+      <!-- Search -->
+      <div class="search-wrapper">
+        <i class="pi pi-search search-icon"></i>
+        <input
+          type="text"
+          pInputText
+          [formControl]="searchControl"
+          placeholder="Search by title, ID, assignee..."
+          class="search-input"
+        />
+        @if (searchControl.value) {
+          <button class="clear-btn" (click)="searchControl.setValue('')">
+            <i class="pi pi-times"></i>
+          </button>
+        }
+      </div>
+
+      <!-- Clear all -->
+      @if (hasActiveFilters) {
+        <button class="btn btn-cancel clear-all-btn" (click)="clearFilters()">
+          <i class="pi pi-filter-slash"></i>
+          <span>Clear</span>
+        </button>
+      }
+    </div>
+
+    <!-- Filters row -->
+    <div class="filters-row">
+      <p-select
+        [formControl]="statusControl"
+        [options]="statusOptions"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Status"
+        styleClass="filter-select"
+      />
+      <p-select
+        [formControl]="priorityControl"
+        [options]="priorityOptions"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Priority"
+        styleClass="filter-select"
+      />
+      <p-select
+        [formControl]="categoryControl"
+        [options]="categoryOptions"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Category"
+        styleClass="filter-select"
+      />
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper app-card">
+    <p-table
+      [value]="tickets()"
+      [lazy]="true"
+      [totalRecords]="totalRecords()"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 20, 50]"
+      [paginator]="true"
+      [loading]="tableLoading()"
+      (onLazyLoad)="loadTickets($event)"
+      dataKey="id"
+      [tableStyle]="{ 'min-width': '960px' }"
+      styleClass="p-datatable-sm"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} tickets"
+      [showCurrentPageReport]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 100px">Ticket ID</th>
+          <th>Title</th>
+          <th style="width: 120px">Status</th>
+          <th style="width: 120px">Priority</th>
+          <th style="width: 120px">Category</th>
+          <th style="width: 150px">Assignee</th>
+          <th style="width: 120px">Created</th>
+          <th style="width: 100px" class="actions-col">Actions</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-ticket>
+        <tr class="ticket-row" (click)="viewTicket(ticket)">
+          <td>
+            <span class="ticket-id-badge">{{ ticket.ticketId }}</span>
+          </td>
+          <td>
+            <div class="ticket-title-cell">
+              <i [class]="categoryIcon(ticket.category)" class="category-icon"></i>
+              <span class="ticket-title">{{ ticket.title }}</span>
+            </div>
+            @if (ticket.tags.length) {
+              <div class="ticket-tags">
+                @for (tag of ticket.tags.slice(0, 3); track tag) {
+                  <span class="tag-pill">{{ tag }}</span>
+                }
+                @if (ticket.tags.length > 3) {
+                  <span class="tag-more">+{{ ticket.tags.length - 3 }}</span>
+                }
+              </div>
+            }
+          </td>
+          <td (click)="$event.stopPropagation()">
+            <p-tag
+              [value]="ticket.status"
+              [severity]="statusSeverity(ticket.status)"
+              styleClass="status-tag"
+            />
+          </td>
+          <td (click)="$event.stopPropagation()">
+            <span class="priority-badge priority-{{ ticket.priority }}">
+              <i [class]="priorityIcon(ticket.priority)"></i>
+              {{ ticket.priority }}
+            </span>
+          </td>
+          <td (click)="$event.stopPropagation()">
+            <span class="category-badge">
+              <i [class]="categoryIcon(ticket.category)"></i>
+              {{ ticket.category }}
+            </span>
+          </td>
+          <td>
+            <span class="assignee">{{ ticket.assignee || '—' }}</span>
+          </td>
+          <td>
+            <span class="date-cell">{{ ticket.createdAt | date:'MMM d, y' }}</span>
+          </td>
+          <td (click)="$event.stopPropagation()">
+            <div class="action-btns">
+              <button
+                pButton
+                icon="pi pi-eye"
+                class="p-button-rounded p-button-text p-button-info"
+                pTooltip="View details"
+                tooltipPosition="top"
+                (click)="viewTicket(ticket)"
+              ></button>
+              <button
+                pButton
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-text p-button-warning"
+                pTooltip="Edit"
+                tooltipPosition="top"
+                (click)="editTicket(ticket)"
+              ></button>
+              <button
+                pButton
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-text p-button-danger"
+                pTooltip="Delete"
+                tooltipPosition="top"
+                (click)="deleteTicket(ticket)"
+              ></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">
+            <div class="empty-state">
+              <i class="pi pi-inbox"></i>
+              <p>No tickets found</p>
+              <small>Try adjusting your search or filters</small>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div>
+
+<p-confirmDialog />

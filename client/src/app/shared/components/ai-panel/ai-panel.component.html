@@ -1,0 +1,67 @@
+<div class="ai-panel">
+
+  <!-- Header -->
+  <div class="ai-header">
+    <div class="ai-header-left">
+      <div class="ai-avatar">
+        <i class="pi pi-sparkles"></i>
+      </div>
+      <div>
+        <p class="ai-title">AI Assistant</p>
+        <p class="ai-subtitle">Ticket #{{ ticket.ticketId }}</p>
+      </div>
+    </div>
+    <button class="close-btn" (click)="close.emit()">
+      <i class="pi pi-times"></i>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div class="ai-messages">
+
+    @if (loadingInit()) {
+      <div class="loading-msg">
+        <i class="pi pi-spin pi-spinner"></i>
+        <span>Analysing ticket...</span>
+      </div>
+    }
+
+    @for (msg of messages(); track $index) {
+      <div class="message" [class.user]="msg.role === 'user'" [class.assistant]="msg.role === 'assistant'">
+        @if (msg.role === 'assistant') {
+          <div class="msg-avatar"><i class="pi pi-sparkles"></i></div>
+        }
+        <div class="msg-bubble">
+          @if (msg.loading) {
+            <span class="typing-dots"><span></span><span></span><span></span></span>
+          } @else {
+            <span [innerHTML]="renderContent(msg.content)"></span>
+          }
+        </div>
+      </div>
+    }
+
+    <div #messagesEnd></div>
+  </div>
+
+  <!-- Input -->
+  <div class="ai-input-row">
+    <input
+      pInputText
+      type="text"
+      [formControl]="questionControl"
+      placeholder="Ask anything about this ticket..."
+      class="ai-input"
+      (keydown)="onKeydown($event)"
+      [disabled]="asking()"
+    />
+    <button
+      pButton
+      icon="pi pi-send"
+      class="p-button-rounded send-btn"
+      [disabled]="!questionControl.value?.trim() || asking()"
+      (click)="askQuestion()"
+    ></button>
+  </div>
+
+</div>

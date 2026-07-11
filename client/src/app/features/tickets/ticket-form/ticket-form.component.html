@@ -1,0 +1,160 @@
+<div class="form-page">
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div>
+      <h2 class="page-title">{{ isEdit() ? 'Edit Ticket' : 'Create Ticket' }}</h2>
+      <p class="page-subtitle">{{ isEdit() ? 'Update the ticket details below' : 'Fill in the details to create a new ticket' }}</p>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-state">
+      <i class="pi pi-spin pi-spinner"></i>
+      <span>Loading ticket...</span>
+    </div>
+  }
+
+  @if (!loading()) {
+    <form [formGroup]="form" (ngSubmit)="submit()" class="app-card form-card" novalidate>
+
+      <!-- Row 1: Title -->
+      <div class="form-group full-width">
+        <label class="form-label" for="title">Title <span class="required">*</span></label>
+        <input
+          id="title"
+          type="text"
+          pInputText
+          formControlName="title"
+          placeholder="Brief summary of the issue"
+          class="w-full"
+          [class.ng-invalid]="fieldError('title')"
+          [class.ng-dirty]="fieldError('title')"
+        />
+        @if (fieldError('title')) {
+          <span class="field-error">Title is required (min 3 characters)</span>
+        }
+      </div>
+
+      <!-- Row 2: Description -->
+      <div class="form-group full-width">
+        <label class="form-label" for="description">Description <span class="required">*</span></label>
+        <textarea
+          id="description"
+          pTextarea
+          formControlName="description"
+          placeholder="Describe the issue in detail..."
+          rows="5"
+          class="w-full"
+          [class.ng-invalid]="fieldError('description')"
+          [class.ng-dirty]="fieldError('description')"
+        ></textarea>
+        @if (fieldError('description')) {
+          <span class="field-error">Description is required (min 10 characters)</span>
+        }
+      </div>
+
+      <!-- Row 3: Status / Priority / Category -->
+      <div class="form-row three-col">
+
+        <div class="form-group">
+          <label class="form-label">Status <span class="required">*</span></label>
+          <p-select
+            formControlName="status"
+            [options]="statusOptions"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select status"
+            styleClass="w-full"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Priority <span class="required">*</span></label>
+          <p-select
+            formControlName="priority"
+            [options]="priorityOptions"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select priority"
+            styleClass="w-full"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Category <span class="required">*</span></label>
+          <p-select
+            formControlName="category"
+            [options]="categoryOptions"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select category"
+            styleClass="w-full"
+          />
+        </div>
+
+      </div>
+
+      <!-- Row 4: Assignee / Reporter -->
+      <div class="form-row two-col">
+
+        <div class="form-group">
+          <label class="form-label" for="assignee">Assignee</label>
+          <input
+            id="assignee"
+            type="text"
+            pInputText
+            formControlName="assignee"
+            placeholder="Who is responsible?"
+            class="w-full"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reporter">Reporter</label>
+          <input
+            id="reporter"
+            type="text"
+            pInputText
+            formControlName="reporter"
+            placeholder="Who reported this?"
+            class="w-full"
+          />
+        </div>
+
+      </div>
+
+      <!-- Row 5: Tags -->
+      <div class="form-group full-width">
+        <label class="form-label" for="tags">Tags</label>
+        <input
+          id="tags"
+          type="text"
+          pInputText
+          formControlName="tags"
+          placeholder="e.g. login, safari, js-error  (comma-separated)"
+          class="w-full"
+        />
+        <span class="field-hint">Separate multiple tags with commas</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="cancel()">
+          <i class="pi pi-times"></i>
+          <span>Cancel</span>
+        </button>
+        <button type="submit" class="btn btn-save" [disabled]="saving()">
+          @if (saving()) {
+            <i class="pi pi-spin pi-spinner"></i>
+          } @else {
+            <i class="pi pi-check"></i>
+          }
+          <span>{{ saving() ? 'Saving...' : (isEdit() ? 'Update Ticket' : 'Create Ticket') }}</span>
+        </button>
+      </div>
+
+    </form>
+  }
+
+</div>

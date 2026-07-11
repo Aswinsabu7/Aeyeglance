@@ -1,0 +1,12 @@
+<div class="layout-wrapper">
+  <app-sidebar />
+  @if (layoutService.sidebarOpen()) {
+    <div class="sidebar-overlay" (click)="layoutService.close()"></div>
+  }
+  <div class="layout-content">
+    <app-navbar />
+    <main class="main-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

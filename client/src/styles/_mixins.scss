@@ -1,0 +1,31 @@
+// ── Reusable SCSS Mixins ──────────────────────────────────────────────────────
+
+@mixin card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin responsive-grid($min: 280px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+  gap: 1.5rem;
+}
+
+@mixin transition($props: all) {
+  transition: $props var(--transition);
+}

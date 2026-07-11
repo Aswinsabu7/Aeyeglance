@@ -1,0 +1,100 @@
+.settings-page { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.settings-section { max-width: 740px; }
+
+.section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+
+  i {
+    width: 30px;
+    height: 30px;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.info-item { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.info-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.setting-name { font-size: 0.9rem; font-weight: 600; color: var(--text-color); }
+
+.setting-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--background-color);
+  color: var(--text-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+
+  i { color: var(--primary-color); }
+
+  &:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+
+.coming-soon { opacity: 0.65; }
+
+.coming-soon-text {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--warning-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+
+  i { color: var(--warning-color); }
+}

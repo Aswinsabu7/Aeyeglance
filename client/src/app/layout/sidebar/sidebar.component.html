@@ -1,0 +1,36 @@
+<aside class="sidebar" [class.open]="layoutService.sidebarOpen()">
+  <!-- Logo / Brand -->
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <i class="pi pi-ticket"></i>
+    </div>
+    <div>
+      <div class="brand-name">TMS</div>
+      <div class="brand-tagline">Tickets</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav">
+    <ul>
+      @for (item of navItems; track item.route) {
+        <li>
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }"
+            class="nav-item"
+          >
+            <span class="nav-icon"><i [class]="item.icon"></i></span>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <span class="version-text">v1.0.0</span>
+  </div>
+</aside>

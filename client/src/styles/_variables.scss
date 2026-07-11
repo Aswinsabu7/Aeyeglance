@@ -1,0 +1,163 @@
+// ── Light Theme Variables (default) ──────────────────────────────────────────
+:root {
+  --primary-color:       #4f6ef7;
+  --primary-dark:        #3a56d4;
+  --primary-light:       #dde4fd;
+  --primary-rgb:         79, 110, 247;
+  --secondary-color:     #7c3aed;
+  --success-color:       #16a34a;
+  --success-bg:          #dcfce7;
+  --warning-color:       #d97706;
+  --warning-bg:          #fef3c7;
+  --danger-color:        #dc2626;
+  --danger-bg:           #fee2e2;
+  --info-color:          #0284c7;
+  --info-bg:             #e0f2fe;
+
+  --background-color:    #f0f4ff;
+  --surface-color:       #ffffff;
+  --card-background:     #ffffff;
+  --navbar-bg:           #ffffff;
+  --sidebar-bg:          #1b2559;
+  --sidebar-bg-2:        #111c44;
+  --sidebar-text:        #a3aed0;
+  --sidebar-hover:       rgba(255, 255, 255, 0.07);
+  --sidebar-active-bg:   rgba(79, 110, 247, 0.18);
+  --sidebar-active:      #7da4fa;
+  --sidebar-active-text: #ffffff;
+
+  --text-color:          #1b2559;
+  --text-secondary:      #2d3748;
+  --text-muted:          #68769a;
+  --text-light:          #a0aec0;
+
+  --table-header-color:  #f0f4ff;
+  --table-header-text:   #4f6ef7;
+  --table-row-hover:     #f5f8ff;
+  --border-color:        #e8edff;
+  --border-light:        #f0f4ff;
+  --input-bg:            #ffffff;
+  --input-border:        #d0d9f0;
+
+  --shadow-xs:           0 1px 2px rgba(79, 110, 247, 0.04);
+  --shadow-sm:           0 2px 8px rgba(79, 110, 247, 0.08);
+  --shadow-md:           0 4px 16px rgba(79, 110, 247, 0.12);
+  --shadow-lg:           0 8px 32px rgba(79, 110, 247, 0.15);
+  --shadow-card:         0 2px 12px rgba(0, 0, 0, 0.06);
+
+  --radius-xs:           4px;
+  --radius-sm:           8px;
+  --radius-md:           12px;
+  --radius-lg:           18px;
+  --radius-xl:           24px;
+
+  --sidebar-width:       260px;
+  --navbar-height:       68px;
+  --transition:          0.2s ease;
+  --transition-slow:     0.35s ease;
+}
+
+// ── Dark Theme Overrides ──────────────────────────────────────────────────────
+body.dark-theme {
+  --primary-color:       #7da4fa;
+  --primary-dark:        #4f6ef7;
+  --primary-light:       #1e2d5a;
+  --primary-rgb:         125, 164, 250;
+  --secondary-color:     #a78bfa;
+
+  --background-color:    #0d1117;
+  --surface-color:       #161b27;
+  --card-background:     #1c2333;
+  --navbar-bg:           #161b27;
+  --sidebar-bg:          #131929;
+  --sidebar-bg-2:        #0d1117;
+  --sidebar-text:        #aab4cf;
+  --sidebar-hover:       rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg:   rgba(125, 164, 250, 0.15);
+  --sidebar-active:      #7da4fa;
+  --sidebar-active-text: #ffffff;
+
+  --text-color:          #e2e8f8;
+  --text-secondary:      #c5cfe8;
+  --text-muted:          #8b95b0;
+  --text-light:          #56607a;
+
+  --table-header-color:  #1e2a44;
+  --table-header-text:   #7da4fa;
+  --table-row-hover:     #1e2740;
+  --border-color:        #2a3550;
+  --border-light:        #1e2740;
+  --input-bg:            #1c2333;
+  --input-border:        #2a3550;
+
+  --shadow-xs:           0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm:           0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md:           0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg:           0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card:         0 2px 12px rgba(0, 0, 0, 0.4);
+
+  --success-color:       #4ade80;
+  --warning-color:       #fbbf24;
+  --danger-color:        #f87171;
+  --info-color:          #38bdf8;
+
+  --success-bg:          rgba(74, 222, 128, 0.12);
+  --warning-bg:          rgba(251, 191, 36, 0.12);
+  --danger-bg:           rgba(248, 113, 113, 0.12);
+  --info-bg:             rgba(56, 189, 248, 0.12);
+
+  // ── Override PrimeNG Aura surface tokens to match our dark palette ──────────
+  // Aura generates body.dark-theme { --p-surface-*: ... } inside @layer primeng.
+  // Unlayered rules win over layered rules, so these always take precedence.
+  --p-surface-0:   #0d1117;
+  --p-surface-50:  #161b27;
+  --p-surface-100: #1c2333;
+  --p-surface-200: #1e2740;
+  --p-surface-300: #2a3550;
+  --p-surface-400: #3a4a6b;
+  --p-surface-500: #56607a;
+  --p-surface-600: #8b95b0;
+  --p-surface-700: #c5cfe8;
+  --p-surface-800: #e2e8f8;
+  --p-surface-900: #f0f4ff;
+  --p-surface-950: #ffffff;
+
+  // Content / card surfaces used by datatable, paginator, overlays
+  --p-content-background:          #1c2333;
+  --p-content-hover-background:     #1e2740;
+  --p-content-color:                #e2e8f8;
+  --p-content-hover-color:          #e2e8f8;
+
+  // Datatable-specific tokens
+  --p-datatable-header-background:       #1e2a44;
+  --p-datatable-header-cell-background:  #1e2a44;
+  --p-datatable-header-cell-color:       #7da4fa;
+  --p-datatable-body-row-background:     #1c2333;
+  --p-datatable-body-row-color:          #c5cfe8;
+  --p-datatable-body-cell-border-color:  #1e2740;
+  --p-datatable-row-toggle-button-hover-background: #1e2740;
+  --p-datatable-sort-icon-color:         #7da4fa;
+
+  // Paginator
+  --p-paginator-background:         #1c2333;
+  --p-paginator-color:              #8b95b0;
+  --p-paginator-border-color:       #2a3550;
+  --p-paginator-nav-button-color:   #8b95b0;
+  --p-paginator-nav-button-hover-background: #1e2740;
+
+  // Select / Dropdown overlay
+  --p-select-background:            #1c2333;
+  --p-select-border-color:          #2a3550;
+  --p-select-color:                 #e2e8f8;
+  --p-select-overlay-background:    #1c2333;
+  --p-select-overlay-border-color:  #2a3550;
+  --p-select-option-color:          #e2e8f8;
+  --p-select-option-focus-background: #1e2740;
+  --p-select-option-selected-background: #1e2d5a;
+
+  // Input
+  --p-inputtext-background:         #1c2333;
+  --p-inputtext-border-color:       #2a3550;
+  --p-inputtext-color:              #e2e8f8;
+  --p-inputtext-placeholder-color:  #56607a;
+}

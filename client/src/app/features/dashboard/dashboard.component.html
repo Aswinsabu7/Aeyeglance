@@ -1,0 +1,59 @@
+<div class="dashboard">
+
+  <div class="page-header">
+    <h2 class="page-title">Dashboard</h2>
+    <p class="page-subtitle">Ticket analytics and overview</p>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-state">
+      <i class="pi pi-spin pi-spinner"></i>
+      <span>Loading dashboard...</span>
+    </div>
+  } @else {
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      @for (stat of statCards(); track stat.label) {
+        <a class="stat-card" routerLink="/tickets" [style.--stat-color]="stat.color">
+          <div class="stat-icon" [style.background]="stat.color + '1a'" [style.color]="stat.color">
+            <i [class]="stat.icon"></i>
+          </div>
+          <div class="stat-content">
+            <p class="stat-value">{{ stat.value }}</p>
+            <p class="stat-label">{{ stat.label }}</p>
+          </div>
+        </a>
+      }
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+
+      <!-- Status Breakdown -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3 class="chart-title">
+            <i class="pi pi-chart-pie"></i>
+            Tickets by Status
+          </h3>
+        </div>
+        <div #statusChart class="chart-canvas"></div>
+      </div>
+
+      <!-- Priority Breakdown -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3 class="chart-title">
+            <i class="pi pi-chart-bar"></i>
+            Tickets by Priority
+          </h3>
+        </div>
+        <div #priorityChart class="chart-canvas"></div>
+      </div>
+
+    </div>
+
+  }
+
+</div>

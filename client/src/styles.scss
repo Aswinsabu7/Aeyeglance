@@ -1,0 +1,573 @@
+// ── Import partials ───────────────────────────────────────────────────────────
+@use 'styles/variables'  as *;
+@use 'styles/mixins'     as *;
+@use 'styles/buttons'    as *;
+
+// ── PrimeNG layer order ───────────────────────────────────────────────────────
+@layer primeng;
+@layer app;
+
+// ── Reset & Base ──────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary-color); text-decoration: none; }
+
+// ── Scrollbar ─────────────────────────────────────────────────────────────────
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  {
+  background: var(--border-color);
+  border-radius: 999px;
+  &:hover { background: var(--text-light); }
+}
+
+// ── Typography ────────────────────────────────────────────────────────────────
+h1, h2, h3, h4, h5 { color: var(--text-color); font-weight: 700; line-height: 1.3; }
+
+// ── Utility ───────────────────────────────────────────────────────────────────
+.text-muted    { color: var(--text-muted) !important; }
+.text-primary  { color: var(--primary-color) !important; }
+.w-full        { width: 100% !important; }
+
+// ── Status Badges ─────────────────────────────────────────────────────────────
+.badge-active {
+  background: var(--success-bg);
+  color: var(--success-color);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.badge-inactive {
+  background: var(--danger-bg);
+  color: var(--danger-color);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+// ── Form helpers ──────────────────────────────────────────────────────────────
+.field-error {
+  color: var(--danger-color);
+  font-size: 0.76rem;
+  margin-top: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  &::before { content: '⚠'; font-size: 0.7rem; }
+}
+
+// ── Cards ─────────────────────────────────────────────────────────────────────
+.app-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+}
+
+// ── Empty state ───────────────────────────────────────────────────────────────
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3.5rem 2rem;
+  color: var(--text-muted);
+  text-align: center;
+
+  i    { font-size: 2.8rem; opacity: 0.3; color: var(--primary-color); }
+  p    { font-size: 0.95rem; font-weight: 500; }
+  small { font-size: 0.8rem; color: var(--text-light); }
+}
+
+// ── Page header ───────────────────────────────────────────────────────────────
+.page-header {
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+// ── ─────────────────────────────────────────────────────────────────────────
+// ── PrimeNG Global Overrides ──────────────────────────────────────────────────
+// ── ─────────────────────────────────────────────────────────────────────────
+
+// ── DataTable ─────────────────────────────────────────────────────────────────
+.p-datatable {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  // Header cells — PrimeNG 19 uses .p-datatable-column-header
+  // PrimeNG 17/18 uses .p-datatable-thead > tr > th
+  thead tr th,
+  .p-datatable-thead > tr > th,
+  .p-datatable-column-header,
+  th[data-p-column-id] {
+    background: var(--table-header-color) !important;
+    color: var(--table-header-text) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    border-color: var(--border-color) !important;
+    border-bottom-color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    font-size: 0.78rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    padding: 0.85rem 1rem !important;
+    white-space: nowrap;
+
+    // Sort icons
+    .p-sortable-column-icon, .p-datatable-sort-icon {
+      color: var(--table-header-text) !important;
+      opacity: 0.5;
+      font-size: 0.7rem !important;
+      margin-left: 0.3rem !important;
+    }
+
+    &.p-datatable-column-sorted .p-sortable-column-icon,
+    &.p-datatable-column-sorted .p-datatable-sort-icon {
+      opacity: 1;
+      color: var(--primary-color) !important;
+    }
+  }
+
+  // Body rows
+  tbody tr td,
+  .p-datatable-tbody > tr > td,
+  .p-datatable-row-cell {
+    background: var(--card-background) !important;
+    border-color: var(--border-light) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.875rem !important;
+    padding: 0.75rem 1rem !important;
+    vertical-align: middle;
+  }
+
+  // Row hover
+  tbody tr:hover td,
+  .p-datatable-tbody > tr:hover > td {
+    background: var(--table-row-hover) !important;
+  }
+
+  // Alternating rows — light-mode subtle stripe
+  tbody tr:nth-child(even) td {
+    background: var(--border-light) !important;
+  }
+
+  // Loading overlay
+  .p-datatable-loading-overlay { background: rgba(255,255,255,0.7); }
+  body.dark-theme & .p-datatable-loading-overlay { background: rgba(0,0,0,0.5); }
+}
+
+// ── Dark-mode datatable: override PrimeNG's injected rgba(255,255,255,0.024) stripe ──
+// PrimeNG injects dark-mode styles after our stylesheet with specificity 0-4-3.
+// Adding `html` raises ours to 0-4-4, ensuring we always win.
+html body.dark-theme .p-datatable .p-datatable-tbody > tr:nth-child(even) > td,
+html body.dark-theme .p-datatable tbody tr:nth-child(even) td {
+  background: var(--card-background) !important;
+}
+
+
+.p-paginator {
+  background: var(--card-background) !important;
+  border-top: 1px solid var(--border-color) !important;
+  padding: 0.65rem 1rem !important;
+  font-size: 0.85rem !important;
+  color: var(--text-muted) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  flex-wrap: wrap !important;
+
+  // All navigation buttons (first/prev/next/last/page numbers)
+  .p-paginator-first, .p-paginator-prev, .p-paginator-next, .p-paginator-last,
+  .p-paginator-page {
+    min-width: 2rem !important;
+    height: 2rem !important;
+    padding: 0 0.4rem !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-xs) !important;
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all var(--transition) !important;
+    cursor: pointer !important;
+
+    &:hover:not([disabled]) {
+      background: var(--primary-light) !important;
+      border-color: var(--primary-color) !important;
+      color: var(--primary-color) !important;
+    }
+
+    &[disabled] {
+      opacity: 0.35 !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  // Active page
+  .p-paginator-page.p-paginator-page-selected,
+  .p-paginator-page[aria-selected="true"] {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #fff !important;
+  }
+
+  // "Showing X to Y" text
+  .p-paginator-current {
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+    margin-left: auto !important;
+    padding: 0 0.25rem !important;
+  }
+
+  // Rows-per-page select
+  .p-select, .p-dropdown {
+    height: 2rem !important;
+    border-radius: var(--radius-xs) !important;
+    font-size: 0.82rem !important;
+  }
+
+  .p-select-label, .p-dropdown-label {
+    font-size: 0.82rem !important;
+    padding: 0 0.5rem !important;
+  }
+}
+
+// ── Dialog ────────────────────────────────────────────────────────────────────
+.p-dialog {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: 1px solid var(--border-color) !important;
+  overflow: visible !important;
+
+  // Clip only the visual background of header/footer to rounded corners;
+  // leave overflow visible so overlays (dropdowns) escape the dialog boundary
+  > .p-dialog-header,
+  > div > .p-dialog-header {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+    overflow: hidden;
+  }
+
+  > .p-dialog-footer,
+  > div > .p-dialog-footer {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
+    overflow: hidden;
+  }
+
+  .p-dialog-header {
+    background: var(--card-background) !important;
+    color: var(--text-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 1.25rem 1.5rem !important;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  }
+
+  .p-dialog-content {
+    background: var(--card-background) !important;
+    color: var(--text-color) !important;
+    padding: 1.25rem 1.5rem !important;
+    overflow: visible !important;
+  }
+
+  .p-dialog-footer {
+    background: var(--card-background) !important;
+    border-top: 1px solid var(--border-color) !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
+  }
+}
+
+// ── Confirm Dialog ────────────────────────────────────────────────────────────
+.p-confirmdialog {
+  .p-dialog-header { background: var(--card-background) !important; }
+  .p-dialog-content {
+    background: var(--card-background) !important;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    .p-confirmdialog-icon { color: var(--warning-color) !important; font-size: 1.5rem; margin-top: 2px; }
+    .p-confirmdialog-message { color: var(--text-color) !important; }
+  }
+  .p-dialog-footer {
+    background: var(--card-background) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 0.75rem !important;
+    padding: 1rem 1.5rem !important;
+
+    // "No" / reject button
+    .p-button:first-child {
+      padding: 0.55rem 1.4rem !important;
+      border-radius: var(--radius-sm) !important;
+      background: transparent !important;
+      color: var(--text-muted) !important;
+      border: 1.5px solid var(--border-color) !important;
+      font-weight: 600 !important;
+      &:hover { background: var(--background-color) !important; color: var(--text-color) !important; border-color: var(--text-light) !important; }
+    }
+
+    // "Yes" / accept button
+    .p-button:last-child {
+      padding: 0.55rem 1.4rem !important;
+      border-radius: var(--radius-sm) !important;
+      background: var(--danger-color) !important;
+      color: #fff !important;
+      border: none !important;
+      font-weight: 600 !important;
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35) !important;
+      &:hover { filter: brightness(1.1) !important; box-shadow: 0 4px 14px rgba(220, 38, 38, 0.45) !important; }
+    }
+  }
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+.p-toast {
+  width: 22rem !important;
+
+  .p-toast-message {
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18) !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .p-toast-message-content {
+    padding: 1rem 1.1rem !important;
+    gap: 0.75rem !important;
+    align-items: flex-start !important;
+  }
+
+  .p-toast-message-icon {
+    font-size: 1.2rem !important;
+    margin-top: 2px !important;
+  }
+
+  .p-toast-summary {
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .p-toast-detail {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    opacity: 0.85 !important;
+  }
+
+  .p-toast-close-button {
+    width: 1.6rem !important;
+    height: 1.6rem !important;
+    padding: 0 !important;
+  }
+}
+
+// ── Inputs ────────────────────────────────────────────────────────────────────
+.p-inputtext, input.p-inputtext, input[pInputText] {
+  background: var(--input-bg) !important;
+  border: 1.5px solid var(--input-border) !important;
+  color: var(--text-color) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.875rem !important;
+  height: 2.5rem !important;
+  padding: 0 0.875rem !important;
+  transition: border-color var(--transition), box-shadow var(--transition) !important;
+
+  &::placeholder { color: var(--text-light) !important; }
+
+  &:focus, &:focus-visible {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15) !important;
+    outline: none !important;
+  }
+
+  &.ng-invalid.ng-touched {
+    border-color: var(--danger-color) !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+  }
+}
+
+// ── Password component ────────────────────────────────────────────────────────
+p-password .p-inputtext { width: 100% !important; }
+p-password .p-password { width: 100% !important; display: block !important; }
+
+// ── Dropdown / Select ─────────────────────────────────────────────────────────
+.p-select, .p-dropdown {
+  background: var(--input-bg) !important;
+  border: 1.5px solid var(--input-border) !important;
+  border-radius: var(--radius-sm) !important;
+  height: 2.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+
+  &:hover  { border-color: var(--primary-color) !important; }
+  &:focus-within { border-color: var(--primary-color) !important; box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15) !important; }
+}
+
+.p-select-label, .p-dropdown-label {
+  color: var(--text-color) !important;
+  font-size: 0.875rem !important;
+  padding: 0 0.875rem !important;
+  line-height: 1 !important;
+}
+
+.p-select-overlay, .p-dropdown-panel {
+  background: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 0.35rem !important;
+  z-index: 9999 !important;
+}
+
+.p-select-option, .p-dropdown-item {
+  color: var(--text-color) !important;
+  font-size: 0.875rem !important;
+  padding: 0.65rem 1rem !important;
+  min-height: 2.4rem !important;
+  display: flex !important;
+  align-items: center !important;
+  border-radius: var(--radius-xs) !important;
+  transition: background var(--transition) !important;
+
+  &:hover, &.p-select-option-selected { background: var(--primary-light) !important; color: var(--primary-dark) !important; }
+}
+
+// ── Tag ───────────────────────────────────────────────────────────────────────
+.p-tag {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  padding: 3px 10px !important;
+
+  &.p-tag-success {
+    background: var(--success-bg) !important;
+    color: var(--success-color) !important;
+  }
+  &.p-tag-danger {
+    background: var(--danger-bg) !important;
+    color: var(--danger-color) !important;
+  }
+}
+
+// ── InputGroup ────────────────────────────────────────────────────────────────
+.p-inputgroup {
+  display: flex;
+  align-items: stretch;
+
+  .p-inputgroup-addon {
+    background: var(--background-color) !important;
+    border: 1.5px solid var(--input-border) !important;
+    border-right: none !important;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+    color: var(--text-muted) !important;
+    padding: 0 0.85rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .p-inputtext {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+    flex: 1;
+  }
+}
+
+// ── Tooltip ───────────────────────────────────────────────────────────────────
+.p-tooltip .p-tooltip-text {
+  padding: 0.45rem 0.85rem !important;
+  font-size: 0.78rem !important;
+  border-radius: var(--radius-xs) !important;
+  font-weight: 500 !important;
+}
+
+// ── Dark Mode — explicit PrimeNG overrides ────────────────────────────────────
+// Belt-and-suspenders: override PrimeNG Aura internal tokens for dark theme.
+// This ensures table rows, cards, and overlays all have the correct dark bg.
+body.dark-theme {
+  color-scheme: dark;
+
+  // Table body row backgrounds — even rows must not be lighter than odd
+  .p-datatable {
+    tbody tr td,
+    .p-datatable-tbody > tr > td {
+      background: var(--card-background) !important;
+      color: var(--text-secondary) !important;
+    }
+
+    tbody tr:nth-child(even) td,
+    .p-datatable-tbody > tr:nth-child(even) > td {
+      background: rgba(255, 255, 255, 0.025) !important;
+    }
+
+    tbody tr:hover td,
+    .p-datatable-tbody > tr:hover > td {
+      background: var(--table-row-hover) !important;
+    }
+
+    thead tr th,
+    .p-datatable-thead > tr > th,
+    .p-datatable-column-header,
+    th[data-p-column-id] {
+      background: var(--table-header-color) !important;
+      color: var(--table-header-text) !important;
+    }
+  }
+
+  // Paginator
+  .p-paginator { background: var(--card-background) !important; }
+
+  // Overlay panels
+  .p-select-overlay,
+  .p-dropdown-panel,
+  .p-overlay-content,
+  .p-overlay {
+    background: var(--card-background) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  // Tooltip
+  .p-tooltip .p-tooltip-text {
+    background: var(--card-background) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+  }
+}

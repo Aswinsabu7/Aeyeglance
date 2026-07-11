@@ -1,0 +1,127 @@
+<div class="detail-page">
+
+  @if (loading()) {
+    <div class="loading-state">
+      <i class="pi pi-spin pi-spinner"></i>
+      <span>Loading ticket...</span>
+    </div>
+  }
+
+  @if (!loading() && ticket()) {
+    <div class="detail-layout" [class.ai-open]="aiOpen()">
+
+      <!-- Main content -->
+      <div class="detail-main">
+
+        <!-- Back + actions bar -->
+        <div class="detail-topbar">
+          <a routerLink="/tickets" class="back-btn">
+            <i class="pi pi-arrow-left"></i>
+            <span>Back to Tickets</span>
+          </a>
+          <div class="topbar-actions">
+            <button class="btn btn-cancel" (click)="deleteTicket()">
+              <i class="pi pi-trash"></i>
+              <span>Delete</span>
+            </button>
+            <a [routerLink]="['/tickets', ticket()!.id, 'edit']" class="btn btn-secondary">
+              <i class="pi pi-pencil"></i>
+              <span>Edit</span>
+            </a>
+            <button class="btn" [class.btn-save]="!aiOpen()" [class.btn-cancel]="aiOpen()" (click)="toggleAiPanel()">
+              <i class="pi pi-sparkles"></i>
+              <span>{{ aiOpen() ? 'Close AI' : 'AI Assistant' }}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Header card -->
+        <div class="app-card ticket-header-card">
+          <div class="ticket-meta-row">
+            <span class="ticket-id-badge">{{ ticket()!.ticketId }}</span>
+            <p-tag
+              [value]="ticket()!.status"
+              [severity]="statusSeverity(ticket()!.status)"
+            />
+            <span class="priority-badge priority-{{ ticket()!.priority }}">
+              <i [class]="priorityIcon(ticket()!.priority)"></i>
+              {{ ticket()!.priority }}
+            </span>
+            <span class="category-badge">
+              <i [class]="categoryIcon(ticket()!.category)"></i>
+              {{ ticket()!.category }}
+            </span>
+          </div>
+
+          <h1 class="ticket-title">{{ ticket()!.title }}</h1>
+
+          <div class="ticket-dates">
+            <span><i class="pi pi-calendar-plus"></i> Created {{ ticket()!.createdAt | date:'MMM d, y, h:mm a' }}</span>
+            <span><i class="pi pi-calendar-clock"></i> Updated {{ ticket()!.updatedAt | date:'MMM d, y, h:mm a' }}</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="app-card">
+          <h3 class="section-heading"><i class="pi pi-align-left"></i> Description</h3>
+          <p class="description-text">{{ ticket()!.description }}</p>
+        </div>
+
+        <!-- Details grid -->
+        <div class="app-card">
+          <h3 class="section-heading"><i class="pi pi-info-circle"></i> Details</h3>
+          <div class="details-grid">
+            <div class="detail-item">
+              <span class="detail-label">Assignee</span>
+              <span class="detail-value">{{ ticket()!.assignee || 'Unassigned' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Reporter</span>
+              <span class="detail-value">{{ ticket()!.reporter || '—' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Status</span>
+              <span class="detail-value capitalize">{{ ticket()!.status }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Priority</span>
+              <span class="detail-value capitalize">{{ ticket()!.priority }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Category</span>
+              <span class="detail-value capitalize">{{ ticket()!.category }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Ticket ID</span>
+              <span class="detail-value mono">{{ ticket()!.ticketId }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        @if (ticket()!.tags.length) {
+          <div class="app-card">
+            <h3 class="section-heading"><i class="pi pi-tag"></i> Tags</h3>
+            <div class="tags-list">
+              @for (tag of ticket()!.tags; track tag) {
+                <span class="tag-pill">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        }
+
+      </div>
+
+      <!-- AI Panel -->
+      @if (aiOpen() && ticket()) {
+        <aside class="ai-panel-wrapper">
+          <app-ai-panel [ticket]="ticket()!" (close)="aiOpen.set(false)" />
+        </aside>
+      }
+
+    </div>
+  }
+
+</div>
+
+<p-confirmDialog />

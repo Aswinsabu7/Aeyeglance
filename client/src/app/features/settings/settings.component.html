@@ -1,0 +1,61 @@
+<div class="settings-page">
+
+  <div class="page-header">
+    <h2 class="page-title">Settings</h2>
+    <p class="page-subtitle">Application configuration and preferences</p>
+  </div>
+
+  <!-- App Info -->
+  <div class="settings-section app-card">
+    <h3 class="section-title">
+      <i class="pi pi-info-circle"></i>
+      Application Info
+    </h3>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">Application</span>
+        <span class="info-value">{{ settingsService.appName() }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Version</span>
+        <span class="info-value">{{ settingsService.version() }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appearance -->
+  <div class="settings-section app-card">
+    <h3 class="section-title">
+      <i class="pi pi-palette"></i>
+      Appearance
+    </h3>
+    <div class="settings-row">
+      <div class="setting-info">
+        <p class="setting-name">Theme</p>
+        <p class="setting-desc">Switch between light and dark mode</p>
+      </div>
+      <button class="theme-toggle-btn" (click)="themeService.toggleTheme()">
+        <i [class]="themeService.isDark() ? 'pi pi-sun' : 'pi pi-moon'"></i>
+        <span>{{ themeService.isDark() ? 'Switch to Light' : 'Switch to Dark' }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Placeholder sections -->
+  <div class="settings-section app-card coming-soon">
+    <h3 class="section-title">
+      <i class="pi pi-shield"></i>
+      Security
+    </h3>
+    <p class="coming-soon-text"><i class="pi pi-clock"></i> Security settings coming soon</p>
+  </div>
+
+  <div class="settings-section app-card coming-soon">
+    <h3 class="section-title">
+      <i class="pi pi-bell"></i>
+      Notifications
+    </h3>
+    <p class="coming-soon-text"><i class="pi pi-clock"></i> Notification preferences coming soon</p>
+  </div>
+
+</div>

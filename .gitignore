@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Angular build output
+client/dist/
+client/.angular/
+
+# Angular cache
+client/.angular/cache/
+
+# Environment files
+client/src/environments/environment.local.ts
+
+# Server build
+server/dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# dotenv
+.env
+.env.*
+!.env.example
+
+# Yarn / npm lock (keep one, ignore the other if desired)
+# package-lock.json
+# yarn.lock

@@ -1,0 +1,468 @@
+[
+  {
+    "id": 1,
+    "ticketId": "TKT001",
+    "title": "Login page crashes on Safari",
+    "description": "Users on Safari 16 experience a white screen when submitting the login form. The console shows a JavaScript TypeError related to optional chaining.",
+    "status": "open",
+    "priority": "critical",
+    "category": "bug",
+    "assignee": "Alice Johnson",
+    "reporter": "Bob Smith",
+    "tags": [
+      "safari",
+      "login",
+      "js-error"
+    ],
+    "createdAt": "2026-07-01T08:00:00.000Z",
+    "updatedAt": "2026-07-01T08:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "ticketId": "TKT002",
+    "title": "Add dark mode support",
+    "description": "Product request: implement a dark mode toggle across the entire application. Should persist user preference in localStorage.",
+    "status": "in-progress",
+    "priority": "medium",
+    "category": "feature",
+    "assignee": "Carol White",
+    "reporter": "David Brown",
+    "tags": [
+      "ui",
+      "dark-mode",
+      "accessibility"
+    ],
+    "createdAt": "2026-07-01T09:15:00.000Z",
+    "updatedAt": "2026-07-03T14:22:00.000Z"
+  },
+  {
+    "id": 3,
+    "ticketId": "TKT003",
+    "title": "Export to CSV not working",
+    "description": "The CSV export button on the reports page triggers a download but the file is empty. Tested on Chrome and Firefox.",
+    "status": "resolved",
+    "priority": "high",
+    "category": "bug",
+    "assignee": "Eve Davis",
+    "reporter": "Frank Wilson",
+    "tags": [
+      "export",
+      "csv",
+      "reports"
+    ],
+    "createdAt": "2026-07-02T10:00:00.000Z",
+    "updatedAt": "2026-07-04T16:45:00.000Z"
+  },
+  {
+    "id": 4,
+    "ticketId": "TKT004",
+    "title": "Dashboard charts not loading",
+    "description": "After the latest deployment, the bar chart on the dashboard shows a spinner indefinitely. API returns 200 but chart canvas stays blank.",
+    "status": "open",
+    "priority": "high",
+    "category": "bug",
+    "assignee": "George Martin",
+    "reporter": "Hannah Lee",
+    "tags": [
+      "dashboard",
+      "charts",
+      "frontend"
+    ],
+    "createdAt": "2026-07-02T11:30:00.000Z",
+    "updatedAt": "2026-07-02T11:30:00.000Z"
+  },
+  {
+    "id": 5,
+    "ticketId": "TKT005",
+    "title": "Add bulk delete feature",
+    "description": "Users want to select multiple records and delete them in one action. This should include a confirmation dialog before deletion.",
+    "status": "open",
+    "priority": "medium",
+    "category": "feature",
+    "assignee": "Ivy Chen",
+    "reporter": "Jack Turner",
+    "tags": [
+      "ux",
+      "bulk-actions"
+    ],
+    "createdAt": "2026-07-03T08:45:00.000Z",
+    "updatedAt": "2026-07-03T08:45:00.000Z"
+  },
+  {
+    "id": 6,
+    "ticketId": "TKT006",
+    "title": "Password reset email not sent",
+    "description": "When a user clicks 'Forgot Password', they don't receive an email. The backend logs show the SMTP connection timing out.",
+    "status": "in-progress",
+    "priority": "critical",
+    "category": "bug",
+    "assignee": "Karl Adams",
+    "reporter": "Laura Scott",
+    "tags": [
+      "auth",
+      "email",
+      "smtp"
+    ],
+    "createdAt": "2026-07-03T13:00:00.000Z",
+    "updatedAt": "2026-07-05T09:10:00.000Z"
+  },
+  {
+    "id": 7,
+    "ticketId": "TKT007",
+    "title": "Improve pagination UX",
+    "description": "The pagination controls are hard to use on mobile. Buttons are too small and there's no jump-to-page input.",
+    "status": "resolved",
+    "priority": "low",
+    "category": "feature",
+    "assignee": "Mike Taylor",
+    "reporter": "Nina Clark",
+    "tags": [
+      "pagination",
+      "mobile",
+      "ux"
+    ],
+    "createdAt": "2026-07-03T15:00:00.000Z",
+    "updatedAt": "2026-07-06T10:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "ticketId": "TKT008",
+    "title": "API rate limit errors in production",
+    "description": "High traffic is causing 429 errors from the API. The global rate limit of 200 req/15min is being hit during peak hours.",
+    "status": "in-progress",
+    "priority": "high",
+    "category": "support",
+    "assignee": "Oscar Lewis",
+    "reporter": "Paula Hall",
+    "tags": [
+      "api",
+      "rate-limit",
+      "performance"
+    ],
+    "createdAt": "2026-07-04T07:00:00.000Z",
+    "updatedAt": "2026-07-07T08:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "ticketId": "TKT009",
+    "title": "Tooltip missing on action buttons",
+    "description": "The view, edit, and delete buttons in the list table have no tooltips. Users are unsure what each icon does.",
+    "status": "resolved",
+    "priority": "low",
+    "category": "feature",
+    "assignee": "Quinn Moore",
+    "reporter": "Rachel Young",
+    "tags": [
+      "accessibility",
+      "tooltip",
+      "ux"
+    ],
+    "createdAt": "2026-07-04T09:00:00.000Z",
+    "updatedAt": "2026-07-05T12:00:00.000Z"
+  },
+  {
+    "id": 10,
+    "ticketId": "TKT010",
+    "title": "Broken image URLs in profile",
+    "description": "Profile avatars show a broken image icon. The image URLs are using HTTP instead of HTTPS causing mixed-content blocking.",
+    "status": "open",
+    "priority": "medium",
+    "category": "bug",
+    "assignee": "Sam Anderson",
+    "reporter": "Tina Harris",
+    "tags": [
+      "images",
+      "https",
+      "profile"
+    ],
+    "createdAt": "2026-07-04T11:00:00.000Z",
+    "updatedAt": "2026-07-04T11:00:00.000Z"
+  },
+  {
+    "id": 11,
+    "ticketId": "TKT011",
+    "title": "Add keyboard shortcuts",
+    "description": "Power users have requested keyboard shortcuts for common actions: Ctrl+N to create, Ctrl+F to search, Escape to close modals.",
+    "status": "open",
+    "priority": "low",
+    "category": "feature",
+    "assignee": "Uma Jackson",
+    "reporter": "Victor Robinson",
+    "tags": [
+      "keyboard",
+      "accessibility",
+      "power-user"
+    ],
+    "createdAt": "2026-07-05T08:00:00.000Z",
+    "updatedAt": "2026-07-05T08:00:00.000Z"
+  },
+  {
+    "id": 12,
+    "ticketId": "TKT012",
+    "title": "Session expires without warning",
+    "description": "JWT access tokens expire after 15 minutes with no warning. Users lose unsaved form data. Need a 2-minute expiry warning banner.",
+    "status": "in-progress",
+    "priority": "high",
+    "category": "feature",
+    "assignee": "Wendy Thomas",
+    "reporter": "Xander Garcia",
+    "tags": [
+      "auth",
+      "session",
+      "ux"
+    ],
+    "createdAt": "2026-07-05T10:30:00.000Z",
+    "updatedAt": "2026-07-08T09:00:00.000Z"
+  },
+  {
+    "id": 13,
+    "ticketId": "TKT013",
+    "title": "Table rows not scrollable on mobile",
+    "description": "The data table overflows on screens smaller than 768px and there is no horizontal scroll. Content is hidden.",
+    "status": "resolved",
+    "priority": "medium",
+    "category": "bug",
+    "assignee": "Yara Martinez",
+    "reporter": "Zoe Perez",
+    "tags": [
+      "mobile",
+      "responsive",
+      "table"
+    ],
+    "createdAt": "2026-07-05T13:00:00.000Z",
+    "updatedAt": "2026-07-07T15:00:00.000Z"
+  },
+  {
+    "id": 14,
+    "ticketId": "TKT014",
+    "title": "Loading spinner shows forever on error",
+    "description": "When an API call fails, the full-page loader stays on screen and never dismisses. The app becomes completely unusable.",
+    "status": "open",
+    "priority": "critical",
+    "category": "bug",
+    "assignee": "Alice Johnson",
+    "reporter": "Bob Smith",
+    "tags": [
+      "loader",
+      "error-handling",
+      "ux"
+    ],
+    "createdAt": "2026-07-06T08:00:00.000Z",
+    "updatedAt": "2026-07-06T08:00:00.000Z"
+  },
+  {
+    "id": 15,
+    "ticketId": "TKT015",
+    "title": "Form validation messages unclear",
+    "description": "Validation error messages are generic (e.g. 'This field is required'). Need field-specific messages like 'Student ID must start with STU'.",
+    "status": "closed",
+    "priority": "low",
+    "category": "support",
+    "assignee": "Carol White",
+    "reporter": "David Brown",
+    "tags": [
+      "forms",
+      "validation",
+      "ux"
+    ],
+    "createdAt": "2026-07-06T10:00:00.000Z",
+    "updatedAt": "2026-07-09T11:00:00.000Z"
+  },
+  {
+    "id": 16,
+    "ticketId": "TKT016",
+    "title": "Implement audit log for changes",
+    "description": "For compliance, every create/update/delete action should be logged with user, timestamp, and before/after values.",
+    "status": "open",
+    "priority": "high",
+    "category": "feature",
+    "assignee": "Eve Davis",
+    "reporter": "Frank Wilson",
+    "tags": [
+      "audit",
+      "compliance",
+      "backend"
+    ],
+    "createdAt": "2026-07-06T14:00:00.000Z",
+    "updatedAt": "2026-07-06T14:00:00.000Z"
+  },
+  {
+    "id": 17,
+    "ticketId": "TKT017",
+    "title": "Search not finding partial matches",
+    "description": "Searching for 'Joh' should return 'John' but the search is doing an exact match instead of a substring match.",
+    "status": "resolved",
+    "priority": "medium",
+    "category": "bug",
+    "assignee": "George Martin",
+    "reporter": "Hannah Lee",
+    "tags": [
+      "search",
+      "backend",
+      "api"
+    ],
+    "createdAt": "2026-07-07T08:00:00.000Z",
+    "updatedAt": "2026-07-08T14:00:00.000Z"
+  },
+  {
+    "id": 18,
+    "ticketId": "TKT018",
+    "title": "Notification bell count doesn't reset",
+    "description": "The unread notification count badge doesn't clear when the user opens the notification panel.",
+    "status": "open",
+    "priority": "low",
+    "category": "bug",
+    "assignee": "Ivy Chen",
+    "reporter": "Jack Turner",
+    "tags": [
+      "notifications",
+      "ui",
+      "badge"
+    ],
+    "createdAt": "2026-07-07T09:30:00.000Z",
+    "updatedAt": "2026-07-07T09:30:00.000Z"
+  },
+  {
+    "id": 19,
+    "ticketId": "TKT019",
+    "title": "Add role-based access control",
+    "description": "Currently all logged-in users see the same interface. Need to restrict certain pages (e.g. Settings, Delete) to admin role only.",
+    "status": "in-progress",
+    "priority": "high",
+    "category": "feature",
+    "assignee": "Karl Adams",
+    "reporter": "Laura Scott",
+    "tags": [
+      "rbac",
+      "auth",
+      "security"
+    ],
+    "createdAt": "2026-07-07T11:00:00.000Z",
+    "updatedAt": "2026-07-09T08:00:00.000Z"
+  },
+  {
+    "id": 20,
+    "ticketId": "TKT020",
+    "title": "Date formatting inconsistent",
+    "description": "Some dates display as MM/DD/YYYY and others as DD-MM-YYYY across different pages. Should use a single consistent format.",
+    "status": "resolved",
+    "priority": "low",
+    "category": "bug",
+    "assignee": "Mike Taylor",
+    "reporter": "Nina Clark",
+    "tags": [
+      "formatting",
+      "i18n",
+      "dates"
+    ],
+    "createdAt": "2026-07-08T08:00:00.000Z",
+    "updatedAt": "2026-07-09T13:00:00.000Z"
+  },
+  {
+    "id": 21,
+    "ticketId": "TKT021",
+    "title": "Performance degradation with 1000+ records",
+    "description": "When the JSON data file has over 1000 records, list page load time exceeds 3 seconds. Need server-side pagination optimization.",
+    "status": "open",
+    "priority": "high",
+    "category": "support",
+    "assignee": "Oscar Lewis",
+    "reporter": "Paula Hall",
+    "tags": [
+      "performance",
+      "pagination",
+      "backend"
+    ],
+    "createdAt": "2026-07-08T10:00:00.000Z",
+    "updatedAt": "2026-07-08T10:00:00.000Z"
+  },
+  {
+    "id": 22,
+    "ticketId": "TKT022",
+    "title": "Improve error messages from API",
+    "description": "When the server returns a 500 error, the UI shows a generic message. The actual error reason should be shown in dev mode.",
+    "status": "closed",
+    "priority": "medium",
+    "category": "support",
+    "assignee": "Quinn Moore",
+    "reporter": "Rachel Young",
+    "tags": [
+      "error-handling",
+      "api",
+      "dx"
+    ],
+    "createdAt": "2026-07-08T13:00:00.000Z",
+    "updatedAt": "2026-07-10T10:00:00.000Z"
+  },
+  {
+    "id": 23,
+    "ticketId": "TKT023",
+    "title": "Add CSV import for bulk records",
+    "description": "Support uploading a CSV file to create multiple records at once. Should validate each row and report errors per row.",
+    "status": "open",
+    "priority": "medium",
+    "category": "feature",
+    "assignee": "Sam Anderson",
+    "reporter": "Tina Harris",
+    "tags": [
+      "import",
+      "csv",
+      "bulk"
+    ],
+    "createdAt": "2026-07-09T08:00:00.000Z",
+    "updatedAt": "2026-07-09T08:00:00.000Z"
+  },
+  {
+    "id": 24,
+    "ticketId": "TKT024",
+    "title": "Broken confirm dialog on delete",
+    "description": "The confirmation dialog for deletion sometimes appears behind the main modal, making it impossible to confirm or cancel.",
+    "status": "in-progress",
+    "priority": "high",
+    "category": "bug",
+    "assignee": "Uma Jackson",
+    "reporter": "Victor Robinson",
+    "tags": [
+      "dialog",
+      "z-index",
+      "ui"
+    ],
+    "createdAt": "2026-07-09T11:00:00.000Z",
+    "updatedAt": "2026-07-10T09:00:00.000Z"
+  },
+  {
+    "id": 25,
+    "ticketId": "TKT025",
+    "title": "Refresh token not invalidated on logout",
+    "description": "After logging out, the refresh token is not removed from the server store, which means it could still be used to obtain new access tokens.",
+    "status": "open",
+    "priority": "critical",
+    "category": "bug",
+    "assignee": "Wendy Thomas",
+    "reporter": "Xander Garcia",
+    "tags": [
+      "security",
+      "auth",
+      "logout"
+    ],
+    "createdAt": "2026-07-10T08:00:00.000Z",
+    "updatedAt": "2026-07-10T08:00:00.000Z"
+  },
+  {
+    "id": 27,
+    "ticketId": "TKT027",
+    "title": "copilot not working test",
+    "description": "copilot not working test",
+    "status": "open",
+    "priority": "medium",
+    "category": "bug",
+    "assignee": "Vishnu",
+    "reporter": "Yasmin",
+    "tags": [
+      "copilot",
+      "not working"
+    ],
+    "createdAt": "2026-07-11T11:08:02.564Z",
+    "updatedAt": "2026-07-11T12:03:13.405Z"
+  }
+]

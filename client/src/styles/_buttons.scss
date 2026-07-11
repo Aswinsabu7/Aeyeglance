@@ -1,0 +1,112 @@
+// ── Reusable Button Classes ───────────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 2.5rem;
+  padding: 0 1.3rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background var(--transition), box-shadow var(--transition),
+              transform var(--transition), opacity var(--transition);
+  white-space: nowrap;
+  line-height: 1;
+  user-select: none;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:not(:disabled):active { transform: translateY(1px); }
+}
+
+.btn-save {
+  @extend .btn;
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.35);
+
+  &:not(:disabled):hover {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.45);
+    transform: translateY(-1px);
+  }
+}
+
+.btn-update {
+  @extend .btn;
+  background: var(--secondary-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+
+  &:not(:disabled):hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+    transform: translateY(-1px);
+  }
+}
+
+.btn-cancel {
+  @extend .btn;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border-color);
+
+  &:not(:disabled):hover {
+    background: var(--background-color);
+    border-color: var(--text-light);
+    color: var(--text-color);
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  background: var(--border-color);
+  color: var(--text-color);
+  border: 1.5px solid var(--border-color);
+
+  &:not(:disabled):hover {
+    background: var(--border-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+
+.btn-warning {
+  @extend .btn;
+  background: var(--warning-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+
+  &:not(:disabled):hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+    transform: translateY(-1px);
+  }
+}
+
+.btn-danger {
+  @extend .btn;
+  background: var(--danger-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+
+  &:not(:disabled):hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+    transform: translateY(-1px);
+  }
+}
