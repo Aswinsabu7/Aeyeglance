@@ -32,6 +32,15 @@ export class AiPanelComponent implements OnInit {
 
   readonly questionControl = new FormControl('');
 
+  readonly quickQuestions: string[] = [
+    'Estimate time to close this ticket',
+    'Is the priority correct?',
+    'What is the root cause?',
+    'Suggest a fix',
+    'Who should handle this?',
+    'Are there any blockers?',
+  ];
+
   ngOnInit(): void {
     this.aiService.analyze(this.ticket.id).subscribe({
       next: res => {
@@ -95,6 +104,11 @@ export class AiPanelComponent implements OnInit {
       event.preventDefault();
       this.askQuestion();
     }
+  }
+
+  askQuick(question: string): void {
+    this.questionControl.setValue(question);
+    this.askQuestion();
   }
 
   // Simple markdown-ish renderer (bold + line breaks)

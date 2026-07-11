@@ -44,6 +44,17 @@
     <div #messagesEnd></div>
   </div>
 
+  <!-- Quick question bubbles -->
+  @if (!loadingInit()) {
+    <div class="quick-questions">
+      @for (q of quickQuestions; track q) {
+        <button class="quick-bubble" (click)="askQuick(q)" [disabled]="asking()">
+          {{ q }}
+        </button>
+      }
+    </div>
+  }
+
   <!-- Input -->
   <div class="ai-input-row">
     <input
