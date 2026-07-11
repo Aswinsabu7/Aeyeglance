@@ -451,8 +451,8 @@
   {
     "id": 27,
     "ticketId": "TKT027",
-    "title": "copilot not working test",
-    "description": "copilot not working test",
+    "title": "copilot not working",
+    "description": "copilot not working",
     "status": "open",
     "priority": "medium",
     "category": "bug",
@@ -463,6 +463,6 @@
       "not working"
     ],
     "createdAt": "2026-07-11T11:08:02.564Z",
-    "updatedAt": "2026-07-11T12:03:13.405Z"
+    "updatedAt": "2026-07-11T12:19:50.065Z"
   }
 ]

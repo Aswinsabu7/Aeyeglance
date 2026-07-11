@@ -24,10 +24,6 @@
               <i class="pi pi-trash"></i>
               <span>Delete</span>
             </button>
-            <a [routerLink]="['/tickets', ticket()!.id, 'edit']" class="btn btn-secondary">
-              <i class="pi pi-pencil"></i>
-              <span>Edit</span>
-            </a>
             <button class="btn" [class.btn-save]="!aiOpen()" [class.btn-cancel]="aiOpen()" (click)="toggleAiPanel()">
               <i class="pi pi-sparkles"></i>
               <span>{{ aiOpen() ? 'Close AI' : 'AI Assistant' }}</span>

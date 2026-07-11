@@ -150,11 +150,7 @@ export class TicketFormComponent implements OnInit {
   }
 
   cancel(): void {
-    if (this.isEdit() && this.ticketId) {
-      this.router.navigate(['/tickets', this.ticketId]);
-    } else {
-      this.router.navigate(['/tickets']);
-    }
+    this.router.navigate(['/tickets']);
   }
 
   fieldError(name: string): boolean {
